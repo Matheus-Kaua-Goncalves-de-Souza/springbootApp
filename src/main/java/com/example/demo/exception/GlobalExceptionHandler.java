@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
             ProductNotFoundException.class,
             OrderNotFoundException.class,
             PaymentNotFoundException.class
-            // Removido Cpf/CnpjAlreadyExistsException daqui, pois 409 Conflict é mais apropriado
+            // Removido Cpf/CnpjAlreadyExistsException daqui, pois 409 Conflict é mais apro
     })
     public ResponseEntity<ErrorResponse> handleNotFound(RuntimeException ex) {
         ErrorResponse error = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
