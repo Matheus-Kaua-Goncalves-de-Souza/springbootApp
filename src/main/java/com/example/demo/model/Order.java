@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.model.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +31,12 @@ public class Order {
     @Column(nullable = false)
     private OrderStatus status;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemOrder> items = new ArrayList<>();
 

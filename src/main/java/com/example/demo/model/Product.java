@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,10 +28,12 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "seller_id")
     private Seller seller;
